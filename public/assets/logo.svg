@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#dcfce7" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="scooterBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Speed Motion Lines -->
+  <g stroke="#94a3b8" stroke-width="4" stroke-linecap="round" opacity="0.6">
+    <line x1="80" y1="120" x2="120" y2="120" stroke-width="5" stroke="#0284c7"/>
+    <line x1="95" y1="135" x2="135" y2="135" stroke-width="4" stroke="#0284c7"/>
+    <line x1="75" y1="150" x2="115" y2="150" stroke-width="5" stroke="#0284c7"/>
+    <line x1="90" y1="195" x2="135" y2="195" stroke-width="4" stroke="#f59e0b"/>
+    <line x1="80" y1="215" x2="120" y2="215" stroke-width="5" stroke="#0284c7"/>
+  </g>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="270" cy="275" rx="140" ry="12" fill="#cbd5e1" opacity="0.6"/>
+
+  <!-- Delivery Backpack Box with Church and Mountains -->
+  <g id="delivery-box" filter="url(#shadow)">
+    <!-- Box Base -->
+    <rect x="135" y="110" width="95" height="95" rx="10" fill="#0369a1" stroke="#0f172a" stroke-width="4"/>
+    <!-- Yellow Gold Border/Front Plate -->
+    <rect x="145" y="120" width="75" height="75" rx="6" fill="#f59e0b" stroke="#0f172a" stroke-width="3"/>
+    
+    <!-- Mountain Triangles on top of box -->
+    <polygon points="150,110 168,75 186,110" fill="#d97706" stroke="#0f172a" stroke-width="3"/>
+    <polygon points="178,110 198,68 220,110" fill="#b45309" stroke="#0f172a" stroke-width="3"/>
+    <polygon points="168,75 174,88 162,88" fill="#fef3c7"/>
+    <polygon points="198,68 205,82 192,82" fill="#fef3c7"/>
+
+    <!-- San Fernando Church Icon in box center -->
+    <!-- Church Base -->
+    <path d="M 158 185 L 158 152 Q 182 135 207 152 L 207 185 Z" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+    <!-- Church Arch Door -->
+    <path d="M 174 185 L 174 162 A 9 9 0 0 1 191 162 L 191 185 Z" fill="#92400e"/>
+    <!-- Small Bell Tower Cross -->
+    <rect x="180" y="136" width="5" height="15" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+    <line x1="177" y1="141" x2="188" y2="141" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="166" cy="154" r="3" fill="#0284c7"/>
+    <circle cx="199" cy="154" r="3" fill="#0284c7"/>
+  </g>
+
+  <!-- Scooter Assembly -->
+  <g id="scooter">
+    <!-- Back Wheel -->
+    <g transform="translate(180, 245)">
+      <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#0f172a" stroke-width="5"/>
+      <circle cx="0" cy="0" r="14" fill="#0284c7" stroke="#0f172a" stroke-width="4"/>
+      <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+    </g>
+
+    <!-- Front Wheel -->
+    <g transform="translate(345, 245)">
+      <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#0f172a" stroke-width="5"/>
+      <circle cx="0" cy="0" r="14" fill="#0284c7" stroke="#0f172a" stroke-width="4"/>
+      <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+    </g>
+
+    <!-- Mudguards & Body -->
+    <!-- Rear Mudguard -->
+    <path d="M 148 240 A 34 34 0 0 1 216 235 L 210 215 Q 170 210 148 240 Z" fill="#0284c7" stroke="#0f172a" stroke-width="4"/>
+    <path d="M 152 235 Q 180 218 206 226" stroke="#ffffff" stroke-width="3" fill="none"/>
+
+    <!-- Front Mudguard -->
+    <path d="M 320 235 A 30 30 0 0 1 370 235 L 360 215 Q 330 215 320 235 Z" fill="#16a34a" stroke="#0f172a" stroke-width="4"/>
+
+    <!-- Scooter Center Curved Apron & Chassis -->
+    <path d="M 195 230 C 230 230 260 235 285 205 C 300 185 305 165 315 150 L 328 175 C 315 200 305 235 270 235 L 205 235 Z" fill="#dc2626" stroke="#0f172a" stroke-width="4"/>
+    <!-- Yellow/Green trim on fairing -->
+    <path d="M 285 190 Q 300 180 310 160" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M 270 210 Q 285 200 295 185" stroke="#16a34a" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+    <!-- Scooter Handlebar & Headlight -->
+    <line x1="315" y1="150" x2="310" y2="135" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="320" cy="132" rx="10" ry="7" fill="#fef08a" stroke="#0f172a" stroke-width="3.5"/>
+    <circle cx="304" cy="132" r="5" fill="#dc2626" stroke="#0f172a" stroke-width="3"/>
+  </g>
+
+  <!-- Mascot: Friendly Delivery Jaguar (Chiapas/San Fernando Heritage) -->
+  <g id="jaguar-driver">
+    <!-- Tail behind driver -->
+    <path d="M 210 185 C 220 155 210 120 220 95 C 225 80 235 85 232 98 C 225 118 230 145 220 185" fill="#f59e0b" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
+    <!-- Tail spots -->
+    <circle cx="220" cy="115" r="2.5" fill="#78350f"/>
+    <circle cx="225" cy="140" r="3" fill="#78350f"/>
+    <circle cx="218" cy="165" r="3" fill="#78350f"/>
+
+    <!-- Legs & Blue Jeans -->
+    <path d="M 230 190 C 240 180 260 178 280 190 L 295 225 L 275 230 L 260 200 L 245 205 Z" fill="#0284c7" stroke="#0f172a" stroke-width="4"/>
+    <!-- Sneaker shoe -->
+    <ellipse cx="292" cy="230" rx="12" ry="7" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+    <path d="M 285 227 L 298 227" stroke="#dc2626" stroke-width="3"/>
+
+    <!-- Torso (Yellow Spotted Leopard Coat) -->
+    <path d="M 245 140 C 245 130 260 120 280 128 C 295 135 290 165 285 185 L 250 185 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="4"/>
+    <!-- Coat Spots -->
+    <circle cx="260" cy="145" r="2.5" fill="#78350f"/>
+    <circle cx="270" cy="152" r="3" fill="#78350f"/>
+    <circle cx="262" cy="165" r="2.5" fill="#78350f"/>
+    <circle cx="275" cy="170" r="3" fill="#78350f"/>
+
+    <!-- Green Neckerchief -->
+    <path d="M 262 125 L 285 128 L 272 142 Z" fill="#16a34a" stroke="#0f172a" stroke-width="2.5"/>
+
+    <!-- Left Arm Holding Handlebar -->
+    <path d="M 270 142 C 285 145 295 142 305 136" stroke="#f59e0b" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 270 142 C 285 145 295 142 305 136" stroke="#0f172a" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="305" cy="136" r="6" fill="#334155" stroke="#0f172a" stroke-width="2"/> <!-- Glove -->
+
+    <!-- Right Arm Waving Friendly to Customer! -->
+    <path d="M 265 135 C 280 120 300 110 320 85" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 265 135 C 280 120 300 110 320 85" stroke="#0f172a" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="285" cy="120" r="2.5" fill="#78350f"/>
+    <circle cx="300" cy="105" r="2.5" fill="#78350f"/>
+    <!-- Waving Hand Glove with 4 open fingers -->
+    <g transform="translate(322, 75)">
+      <circle cx="5" cy="10" r="8" fill="#334155" stroke="#0f172a" stroke-width="3"/>
+      <line x1="6" y1="5" x2="6" y2="-5" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+      <line x1="12" y1="7" x2="15" y2="-3" stroke="#334155" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="0" y1="7" x2="-3" y2="-2" stroke="#334155" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="-5" y1="12" x2="-9" y2="7" stroke="#334155" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- Jaguar Head -->
+    <g id="jaguar-head">
+      <ellipse cx="270" cy="105" rx="20" ry="17" fill="#f59e0b" stroke="#0f172a" stroke-width="3.5"/>
+      <!-- Cheek Fluff -->
+      <path d="M 285 105 Q 295 110 286 117" fill="#f59e0b" stroke="#0f172a" stroke-width="3"/>
+      <!-- Spots on Cheeks -->
+      <circle cx="260" cy="98" r="2" fill="#78350f"/>
+      <circle cx="258" cy="106" r="2" fill="#78350f"/>
+      <!-- Muzzle -->
+      <ellipse cx="278" cy="110" rx="9" ry="7" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+      <polygon points="280,105 284,109 276,109" fill="#0f172a"/>
+      <!-- Big Friendly Smile -->
+      <path d="M 275 112 Q 282 118 288 111" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 278 114 Q 282 119 285 114 Z" fill="#dc2626"/> <!-- Tongue -->
+      <!-- Big Cheerful Eye -->
+      <circle cx="274" cy="98" r="4.5" fill="#0f172a"/>
+      <circle cx="276" cy="96" r="1.5" fill="#ffffff"/>
+      <circle cx="260" cy="95" r="4" fill="#0f172a"/>
+      <circle cx="262" cy="93" r="1.2" fill="#ffffff"/>
+
+      <!-- Fedora / Explorer Hat with Green Ribbon -->
+      <!-- Hat Crown -->
+      <path d="M 252 86 C 252 70 282 66 288 84 Z" fill="#0284c7" stroke="#0f172a" stroke-width="3.5"/>
+      <!-- Hat Brim -->
+      <ellipse cx="269" cy="85" rx="24" ry="5.5" fill="#0369a1" stroke="#0f172a" stroke-width="3"/>
+      <!-- Ribbon -->
+      <path d="M 253 82 Q 270 80 287 81" stroke="#f59e0b" stroke-width="3.5" fill="none"/>
+      <!-- Small Round Ear -->
+      <ellipse cx="250" cy="86" rx="5" ry="6" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5"/>
+      <ellipse cx="250" cy="86" rx="2.5" ry="3.5" fill="#78350f"/>
+    </g>
+  </g>
+
+  <!-- Typography: SanFer Eats -->
+  <g id="brand-typography" transform="translate(0, 310)">
+    <text x="250" y="38" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" letter-spacing="-1">
+      <tspan fill="#d97706">SanFer </tspan>
+      <tspan fill="#15803d">Eats</tspan>
+    </text>
+    <text x="250" y="58" text-anchor="middle" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-weight="600" font-size="14" fill="#475569" letter-spacing="1.5">
+      TU CIUDAD, EN UN SOLO LUGAR
+    </text>
+  </g>
+</svg>

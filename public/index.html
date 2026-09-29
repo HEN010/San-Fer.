@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SanFer Eats - Tu ciudad, en un solo lugar</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- TOP SITE HEADER                            -->
+  <!-- ========================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <!-- Logo and Brand -->
+      <a href="#inicio" class="brand-wrapper" onclick="navigateTo('inicio')">
+        <img src="/assets/logo.svg" alt="SanFer Eats Logo" class="brand-logo-img">
+        <div class="brand-title">
+          <span class="brand-name">SanFer <span>Eats</span></span>
+          <span class="brand-slogan" id="header-slogan">Tu ciudad, en un solo lugar</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Tabs -->
+      <nav class="desktop-nav">
+        <button class="nav-link active" data-nav="inicio" onclick="navigateTo('inicio')">
+          <span>🏠</span> Inicio
+        </button>
+        <button class="nav-link" data-nav="comida" onclick="navigateTo('comida')">
+          <span>🍽️</span> Comida
+        </button>
+        <button class="nav-link" data-nav="compras" onclick="navigateTo('compras')">
+          <span>🛒</span> Compras
+        </button>
+        <button class="nav-link" data-nav="entrega" onclick="navigateTo('entrega')">
+          <span>📦</span> Entrega
+        </button>
+      </nav>
+
+      <!-- Header Actions Right -->
+      <div class="header-actions">
+        <!-- Live Service Status Pill -->
+        <div id="service-status-pill" class="status-pill open" title="Estado del servicio">
+          <span class="status-dot green"></span>
+          <span id="service-status-text">Abierto</span>
+        </div>
+
+        <!-- Client Identification Chip -->
+        <button class="client-chip" id="client-chip-btn" onclick="openClientModal()">
+          <span>👤</span>
+          <span id="client-chip-name">Identifícate</span>
+        </button>
+
+        <!-- Admin Access Button -->
+        <button class="admin-header-btn" onclick="navigateTo('admin')" title="Panel de Administración">
+          <span>⚙️</span> <span class="hide-mobile">Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN APP VIEWS CONTAINER                   -->
+  <!-- ========================================== -->
+  <main class="main-wrapper">
+
+    <!-- 1. INICIO (HOME) VIEW -->
+    <section id="view-inicio" class="view-section active">
+      <!-- Closed service banner (hidden by default) -->
+      <div id="closed-service-banner" class="service-banner-closed" style="display: none;">
+        <span style="font-size: 24px;">⏰</span>
+        <div>
+          <strong id="closed-banner-title">SanFer Eats se encuentra cerrado</strong>
+          <p id="closed-banner-desc" style="font-size: 13px; margin-top: 2px;">En este momento no se reciben pedidos.</p>
+        </div>
+      </div>
+
+      <!-- Hero Card Banner -->
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-subtitle">Plataforma Local de San Fernando</div>
+          <h1 class="hero-title" id="hero-title-text">¿Qué necesitas hoy?</h1>
+          <p class="hero-desc" id="hero-desc-text">
+            Comida de tus restaurantes favoritos, compras de la tienda o mandados hasta la puerta de tu casa.
+          </p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="btn-primary" onclick="navigateTo('comida')">
+              <span>🍽️</span> Explorar Comida
+            </button>
+            <button class="btn-secondary" onclick="openWhatsAppDirect()">
+              <span>💬</span> WhatsApp Directo
+            </button>
+          </div>
+        </div>
+        <div class="hero-illustration">
+          <img src="/assets/logo.svg" alt="Mascota SanFer Eats" class="hero-mascot-img">
+        </div>
+      </div>
+
+      <!-- Quick Action Cards "¿Qué necesitas hoy?" -->
+      <div class="section-headline">
+        <span>¿Qué necesitas hoy?</span>
+      </div>
+
+      <div class="services-grid">
+        <!-- Comida Card -->
+        <div class="service-card comida" onclick="navigateTo('comida')">
+          <div class="service-card-header">
+            <div class="service-icon-box">🍽️</div>
+            <div class="service-arrow">→</div>
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Comida</h3>
+            <p class="service-card-sub">Encuentra tu comida favorita</p>
+          </div>
+        </div>
+
+        <!-- Compras Card -->
+        <div class="service-card compras" onclick="navigateTo('compras')">
+          <div class="service-card-header">
+            <div class="service-icon-box">🛒</div>
+            <div class="service-arrow">→</div>
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Compras</h3>
+            <p class="service-card-sub">Nosotros lo compramos por ti</p>
+          </div>
+        </div>
+
+        <!-- Entrega Card -->
+        <div class="service-card entrega" onclick="navigateTo('entrega')">
+          <div class="service-card-header">
+            <div class="service-icon-box">📦</div>
+            <div class="service-arrow">→</div>
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Entrega</h3>
+            <p class="service-card-sub">Llevamos tus cosas hasta ti</p>
+          </div>
+        </div>
+
+        <!-- WhatsApp Card -->
+        <div class="service-card whatsapp" onclick="openWhatsAppDirect()">
+          <div class="service-card-header">
+            <div class="service-icon-box">💬</div>
+            <div class="service-arrow">→</div>
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">WhatsApp</h3>
+            <p class="service-card-sub">Contáctanos directamente</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery Fare Preview Reference -->
+      <div class="rates-preview-banner">
+        <div class="rates-title">
+          <span>📍</span> Tarifas estimadas de entrega
+        </div>
+        <div class="rates-badges-row" id="home-rates-container">
+          <!-- Rendered dynamically from DB -->
+          <div class="rate-badge-item">
+            <span class="rate-badge-name">Centro</span>
+            <span class="rate-badge-price">$20 MXN</span>
+          </div>
+          <div class="rate-badge-item">
+            <span class="rate-badge-name">Orillas</span>
+            <span class="rate-badge-price">$30 MXN</span>
+          </div>
+          <div class="rate-badge-item">
+            <span class="rate-badge-name">Colonias externas</span>
+            <span class="rate-badge-price">Desde $50 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Restaurants Preview -->
+      <div class="section-headline">
+        <span>Restaurantes Populares</span>
+        <button style="font-size: 14px; font-weight: 700; color: var(--primary-green);" onclick="navigateTo('comida')">
+          Ver todos →
+        </button>
+      </div>
+      <div class="restaurants-grid" id="home-popular-restaurants">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- 2. COMIDA (FOOD) VIEW -->
+    <section id="view-comida" class="view-section">
+      <!-- Food Header -->
+      <div class="food-banner-header">
+        <h1>Explora comida</h1>
+        <p>Los mejores sabores de San Fernando, en un solo lugar. ¡Puedes pedir de varios restaurantes a la vez!</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="food-search-input" class="search-input" placeholder="Busca tu platillo o restaurante favorito..." oninput="handleFoodSearch(this.value)">
+      </div>
+
+      <!-- Category Pills Carousel -->
+      <div class="categories-scroll" id="food-categories-scroll">
+        <button class="category-pill active" onclick="filterCategory('Todos')">
+          <span>🌟</span> Todos
+        </button>
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Restaurants List Header -->
+      <div class="section-headline">
+        <span id="restaurants-count-title">Restaurantes disponibles</span>
+      </div>
+
+      <!-- Restaurants Grid -->
+      <div class="restaurants-grid" id="restaurants-container">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- 3. COMPRAS / SÚPER VIEW -->
+    <section id="view-compras" class="view-section">
+      <div class="food-banner-header" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&auto=format&fit=crop&q=80') center/cover;">
+        <h1>¿Qué necesitas que compremos?</h1>
+        <p>Nosotros lo compramos en la tienda o súper local y te lo llevamos hasta tu puerta.</p>
+      </div>
+
+      <div class="shopping-form-card">
+        <!-- Store Selector -->
+        <div class="form-group">
+          <label class="form-label">🏪 Establecimiento sugerido (opcional)</label>
+          <select id="shopping-store-select" class="form-select">
+            <option value="Súper San Fernando">Súper San Fernando</option>
+            <option value="Abarrotes La Guadalupana">Abarrotes La Guadalupana</option>
+            <option value="Frutería & Verdulería Don Pepe">Frutería & Verdulería Don Pepe</option>
+            <option value="Farmacia San Juan">Farmacia San Juan</option>
+            <option value="Cualquier tienda local">Cualquier establecimiento a mi elección</option>
+          </select>
+        </div>
+
+        <!-- Suggested Items Catalog & Quick Click -->
+        <div class="form-group">
+          <label class="form-label">💡 Guía rápida de productos comunes (haz clic para agregar)</label>
+          <div class="super-cat-chips" id="super-suggested-items-container">
+            <!-- Dynamically populated categories and suggested items -->
+          </div>
+        </div>
+
+        <!-- Shopping List Textarea -->
+        <div class="form-group">
+          <label class="form-label">📝 Lista de productos o artículos *</label>
+          <textarea id="shopping-items-text" class="form-textarea" rows="4" placeholder="Ejemplo:&#10;1 Cono de huevo blanco&#10;1 Aceite 1L Nutrioli&#10;1 Leche Lala entera&#10;1 Pan blanco Bimbo"></textarea>
+          <small style="color: var(--text-muted); font-size: 12px; display: block; margin-top: 4px;">
+            Escribe libremente todo lo que necesitas, cantidades y marcas.
+          </small>
+        </div>
+
+        <!-- Observations -->
+        <div class="form-group">
+          <label class="form-label">💬 Observaciones o marcas preferidas (opcional)</label>
+          <input type="text" id="shopping-notes" class="form-input" placeholder="Ej. Si no hay marca Lala, traer Santa Clara...">
+        </div>
+
+        <!-- Contact & Delivery -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">👤 Tu Nombre *</label>
+            <input type="text" id="shopping-client-name" class="form-input" placeholder="Tu nombre completo">
+          </div>
+          <div class="form-group">
+            <label class="form-label">📞 Teléfono *</label>
+            <input type="tel" id="shopping-client-phone" class="form-input" placeholder="10 dígitos">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">📍 Dirección de entrega *</label>
+          <input type="text" id="shopping-delivery-address" class="form-input" placeholder="Calle, número, colonia o referencias..." oninput="handleAddressZoneDetection('shopping', this.value)">
+          <div id="shopping-zone-badge" class="zone-detected-badge" style="display: none;">
+            <span>🗺️</span> <span id="shopping-zone-text">Zona Centro - $20 MXN</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn-whatsapp-order" onclick="submitShoppingOrder()">
+          <span>💬</span> Solicitar compra por WhatsApp
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. ENTREGA (COURIER) VIEW -->
+    <section id="view-entrega" class="view-section">
+      <div class="food-banner-header" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&auto=format&fit=crop&q=80') center/cover;">
+        <h1>Tu envío, en buenas manos</h1>
+        <p>Rápido, seguro y confiable. Llevamos tus paquetes, documentos y encargos de punto A a punto B.</p>
+      </div>
+
+      <!-- Rates Grid -->
+      <div class="courier-rates-grid" id="courier-rates-container">
+        <!-- Injected via DB -->
+      </div>
+
+      <!-- Courier Request Form -->
+      <div class="shopping-form-card">
+        <div class="form-group">
+          <label class="form-label">📍 Lugar de recogida *</label>
+          <input type="text" id="courier-pickup" class="form-input" placeholder="Ej. Tienda, oficina, casa particular (calle y número)...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">🎯 Lugar de entrega *</label>
+          <input type="text" id="courier-delivery" class="form-input" placeholder="Dirección exacta de entrega y referencias..." oninput="handleAddressZoneDetection('courier', this.value)">
+          <div id="courier-zone-badge" class="zone-detected-badge" style="display: none;">
+            <span>🗺️</span> <span id="courier-zone-text">Zona Centro - $20 MXN</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">📦 Descripción de lo que se transportará *</label>
+          <textarea id="courier-desc" class="form-textarea" rows="2" placeholder="Ej. Sobre con documentos, llaves de casa, paquete mediano..."></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">👤 Nombre de quien recibe *</label>
+            <input type="text" id="courier-recipient-name" class="form-input" placeholder="Nombre de destinatario">
+          </div>
+          <div class="form-group">
+            <label class="form-label">📞 Teléfono de contacto *</label>
+            <input type="tel" id="courier-recipient-phone" class="form-input" placeholder="Número de contacto">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">💬 Observaciones adicionales</label>
+          <input type="text" id="courier-notes" class="form-input" placeholder="Instrucciones para el repartidor...">
+        </div>
+
+        <button class="btn-whatsapp-order" onclick="submitCourierOrder()">
+          <span>💬</span> Solicitar entrega por WhatsApp
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. CLIENT PROFILE & ORDER HISTORY VIEW -->
+    <section id="view-perfil" class="view-section">
+      <div class="section-headline">
+        <span>Mi Cuenta y Pedidos</span>
+      </div>
+
+      <div class="shopping-form-card" style="margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Mi Identificador en SanFer Eats</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Elige cómo quieres que te identifiquemos (ej. Henry, HenryC, HCV). No necesitas contraseñas complicadas.
+        </p>
+
+        <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;">
+          <div class="form-group" style="flex: 1; min-width: 200px; margin-bottom: 0;">
+            <label class="form-label">Identificador personalizado</label>
+            <input type="text" id="profile-input-identifier" class="form-input" placeholder="Ej. HenryC" oninput="checkIdentifierLive(this.value)">
+            <small id="profile-identifier-feedback" style="font-size: 12px; margin-top: 4px; display: block;"></small>
+          </div>
+          <button class="btn-primary" onclick="saveProfileIdentifier()">
+            Guardar
+          </button>
+        </div>
+      </div>
+
+      <div class="section-headline">
+        <span>Historial de mis pedidos</span>
+      </div>
+      <div id="client-orders-history-list">
+        <p style="color: var(--text-muted); font-size: 14px;">No tienes pedidos recientes con este identificador.</p>
+      </div>
+    </section>
+
+    <!-- 6. ADMIN PANEL VIEW (PROTECTED) -->
+    <section id="view-admin" class="view-section">
+      <!-- PIN Login Modal / Screen if not verified -->
+      <div id="admin-login-screen" class="shopping-form-card" style="max-width: 420px; margin: 40px auto; text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 12px;">🔐</div>
+        <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Acceso Administrativo</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+          Ingresa el PIN de seguridad para gestionar pedidos, restaurantes, tarifas y mantenimiento.
+        </p>
+        <div class="form-group">
+          <input type="password" id="admin-pin-input" class="form-input" placeholder="PIN de 4 dígitos" style="text-align: center; font-size: 22px; letter-spacing: 4px;" maxlength="8">
+        </div>
+        <button class="btn-primary" style="width: 100%;" onclick="submitAdminLogin()">
+          Ingresar al Panel
+        </button>
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 14px;">
+          PIN inicial por defecto: <strong>1234</strong> (modificable en Ajustes).
+        </p>
+      </div>
+
+      <!-- Actual Admin Dashboard (hidden until PIN authenticated) -->
+      <div id="admin-content-area" style="display: none;">
+        <div class="admin-layout">
+          <!-- Sidebar Navigation -->
+          <aside class="admin-sidebar">
+            <div style="padding: 10px 14px; border-bottom: 1px solid var(--border-color); margin-bottom: 10px;">
+              <strong style="font-size: 15px;">Panel SanFer Eats</strong>
+              <div style="font-size: 11px; color: var(--text-muted);">Administración Visual</div>
+            </div>
+
+            <button class="admin-nav-item active" data-admin-tab="dashboard" onclick="switchAdminTab('dashboard')">
+              <span>📊</span> Dashboard
+            </button>
+            <button class="admin-nav-item" data-admin-tab="pedidos" onclick="switchAdminTab('pedidos')">
+              <span>🛵</span> Pedidos en Vivo
+            </button>
+            <button class="admin-nav-item" data-admin-tab="restaurantes" onclick="switchAdminTab('restaurantes')">
+              <span>🍽️</span> Restaurantes
+            </button>
+            <button class="admin-nav-item" data-admin-tab="platillos" onclick="switchAdminTab('platillos')">
+              <span>🍕</span> Platillos y Menús
+            </button>
+            <button class="admin-nav-item" data-admin-tab="zonas" onclick="switchAdminTab('zonas')">
+              <span>🗺️</span> Zonas y Tarifas
+            </button>
+            <button class="admin-nav-item" data-admin-tab="whatsapp" onclick="switchAdminTab('whatsapp')">
+              <span>📱</span> WhatsApp y Repartidores
+            </button>
+            <button class="admin-nav-item" data-admin-tab="horarios" onclick="switchAdminTab('horarios')">
+              <span>⏰</span> Estado y Horarios
+            </button>
+            <button class="admin-nav-item" data-admin-tab="clientes" onclick="switchAdminTab('clientes')">
+              <span>👥</span> Clientes
+            </button>
+            <button class="admin-nav-item" data-admin-tab="mantenimiento" onclick="switchAdminTab('mantenimiento')">
+              <span>💾</span> Mantenimiento y Datos
+            </button>
+            <button class="admin-nav-item" data-admin-tab="ajustes" onclick="switchAdminTab('ajustes')">
+              <span>⚙️</span> Ajustes Generales
+            </button>
+            <button class="admin-nav-item" style="color: #dc2626; margin-top: 16px;" onclick="adminLogout()">
+              <span>🚪</span> Cerrar Sesión
+            </button>
+          </aside>
+
+          <!-- Main Panel Content -->
+          <div class="admin-main-panel">
+            <!-- TAB 1: DASHBOARD -->
+            <div id="admin-tab-dashboard" class="admin-tab-content">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Estadísticas & Dashboard</h2>
+                <!-- Period Filter -->
+                <div style="display: flex; gap: 6px;">
+                  <select id="admin-dashboard-period" class="form-select" style="padding: 6px 12px; font-size: 13px;" onchange="loadAdminDashboardData()">
+                    <option value="today">Hoy</option>
+                    <option value="week">Esta semana</option>
+                    <option value="month" selected>Este mes</option>
+                    <option value="three_months">Últimos 3 meses</option>
+                    <option value="year">Año actual</option>
+                    <option value="all">Todo el historial</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- KPI Cards -->
+              <div class="kpi-grid">
+                <div class="kpi-card green">
+                  <span class="kpi-label">Ingresos Totales</span>
+                  <span class="kpi-value" id="kpi-total-revenue">$0.00</span>
+                </div>
+                <div class="kpi-card">
+                  <span class="kpi-label">Total Pedidos</span>
+                  <span class="kpi-value" id="kpi-total-orders">0</span>
+                </div>
+                <div class="kpi-card green">
+                  <span class="kpi-label">Pedidos Completados</span>
+                  <span class="kpi-value" id="kpi-completed-orders">0</span>
+                </div>
+                <div class="kpi-card orange">
+                  <span class="kpi-label">Clientes Activos</span>
+                  <span class="kpi-value" id="kpi-active-clients">0</span>
+                </div>
+              </div>
+
+              <!-- 4 Real-Time Interactive Canvas Charts -->
+              <div class="charts-grid">
+                <!-- Chart 1: Evolution of Orders -->
+                <div class="chart-card">
+                  <div class="chart-title">
+                    <span>📈 Gráfica 1 — Evolución de Pedidos</span>
+                  </div>
+                  <div class="chart-canvas-wrapper">
+                    <canvas id="chart-evolution" width="400" height="220"></canvas>
+                  </div>
+                </div>
+
+                <!-- Chart 2: Top Dishes -->
+                <div class="chart-card">
+                  <div class="chart-title">
+                    <span>🌮 Gráfica 2 — Platillos Más Solicitados</span>
+                  </div>
+                  <div class="chart-canvas-wrapper">
+                    <canvas id="chart-dishes" width="400" height="220"></canvas>
+                  </div>
+                </div>
+
+                <!-- Chart 3: Top Restaurants -->
+                <div class="chart-card">
+                  <div class="chart-title">
+                    <span>🏪 Gráfica 3 — Restaurantes con Mayor Movimiento</span>
+                  </div>
+                  <div class="chart-canvas-wrapper">
+                    <canvas id="chart-restaurants" width="400" height="220"></canvas>
+                  </div>
+                </div>
+
+                <!-- Chart 4: Client Activity / Recurrence -->
+                <div class="chart-card">
+                  <div class="chart-title">
+                    <span>👥 Gráfica 4 — Actividad de Clientes Recurrentes</span>
+                  </div>
+                  <div class="chart-canvas-wrapper">
+                    <canvas id="chart-clients" width="400" height="220"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: ORDERS MANAGEMENT -->
+            <div id="admin-tab-pedidos" class="admin-tab-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Gestión de Pedidos</h2>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <select id="admin-order-filter-status" class="form-select" style="padding: 6px 12px; font-size: 13px;" onchange="loadAdminOrders()">
+                    <option value="all">Todos los estados</option>
+                    <option value="new">Nueva solicitud</option>
+                    <option value="reviewing">En revisión</option>
+                    <option value="confirmed">Confirmada</option>
+                    <option value="preparing">En preparación / compra</option>
+                    <option value="on_the_way">En camino</option>
+                    <option value="delivered">Entregada</option>
+                    <option value="cancelled">Cancelada</option>
+                  </select>
+                  <select id="admin-order-filter-service" class="form-select" style="padding: 6px 12px; font-size: 13px;" onchange="loadAdminOrders()">
+                    <option value="all">Todos los servicios</option>
+                    <option value="food">Comida</option>
+                    <option value="shopping">Compras / Súper</option>
+                    <option value="courier">Entrega / Mandado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Fecha / Hora</th>
+                      <th>Cliente</th>
+                      <th>Servicio</th>
+                      <th>Zona / Dirección</th>
+                      <th>Tarifa Entrega</th>
+                      <th>Total</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-orders-table-body">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 3: RESTAURANTES -->
+            <div id="admin-tab-restaurantes" class="admin-tab-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Restaurantes Asociados</h2>
+                <button class="btn-primary" onclick="openRestaurantFormModal()">
+                  <span>➕</span> Nuevo Restaurante
+                </button>
+              </div>
+
+              <div class="restaurants-grid" id="admin-restaurants-grid">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- TAB 4: PLATILLOS Y MENÚS -->
+            <div id="admin-tab-platillos" class="admin-tab-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Platillos y Precios</h2>
+                <div style="display: flex; gap: 8px;">
+                  <select id="admin-dish-filter-rest" class="form-select" style="padding: 6px 12px; font-size: 13px;" onchange="loadAdminDishes()">
+                    <option value="">Todos los restaurantes</option>
+                  </select>
+                  <button class="btn-primary" onclick="openDishFormModal()">
+                    <span>➕</span> Nuevo Platillo
+                  </button>
+                </div>
+              </div>
+
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Foto</th>
+                      <th>Nombre</th>
+                      <th>Restaurante</th>
+                      <th>Precio</th>
+                      <th>Disponibilidad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-dishes-table-body">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 5: ZONAS Y TARIFAS -->
+            <div id="admin-tab-zonas" class="admin-tab-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Zonas y Tarifas de Entrega</h2>
+                <button class="btn-primary" onclick="openZoneFormModal()">
+                  <span>➕</span> Nueva Zona
+                </button>
+              </div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Configura las tarifas base y las palabras clave asociadas para la detección automática cuando el cliente escriba su dirección.
+              </p>
+
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Nombre Zona</th>
+                      <th>Tarifa Base</th>
+                      <th>Descripción</th>
+                      <th>Palabras clave de detección</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-zones-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 6: WHATSAPP -->
+            <div id="admin-tab-whatsapp" class="admin-tab-content" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; font-weight: 800;">Líneas de WhatsApp Administrables</h2>
+                <button class="btn-primary" onclick="openWhatsAppFormModal()">
+                  <span>➕</span> Nuevo Número
+                </button>
+              </div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Los clientes enviarán sus solicitudes al número activo de mayor prioridad. Puedes rotar entre administradores y repartidores sin modificar código.
+              </p>
+
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Etiqueta</th>
+                      <th>Número de Teléfono</th>
+                      <th>Prioridad</th>
+                      <th>Estado</th>
+                      <th>Notas</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-whatsapp-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 7: ESTADO Y HORARIOS -->
+            <div id="admin-tab-horarios" class="admin-tab-content" style="display: none;">
+              <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 16px;">Control de Estado y Horarios</h2>
+
+              <div class="shopping-form-card" style="margin-bottom: 24px;">
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Apertura Inmediata</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                  Abre o cierra el servicio con un solo clic en caso de lluvia, alta demanda o imprevistos.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                  <button class="btn-primary" style="background-color: #15803d;" onclick="setFastServiceStatus('active')">
+                    🟢 Abrir servicio ahora
+                  </button>
+                  <button class="btn-danger" style="background-color: #dc2626; color: #fff;" onclick="setFastServiceStatus('inactive')">
+                    🔴 Cerrar servicio ahora
+                  </button>
+                  <button class="btn-secondary" onclick="setFastServiceStatus('scheduled')">
+                    ⏰ Modo Programado por Horario
+                  </button>
+                </div>
+              </div>
+
+              <div class="shopping-form-card">
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 12px;">Horarios Semanales Programados</h3>
+                <div id="admin-schedule-form">
+                  <!-- Injected via JS for Mon-Sun -->
+                </div>
+                <div class="form-group" style="margin-top: 16px;">
+                  <label class="form-label">Mensaje personalizado cuando el servicio esté inactivo</label>
+                  <input type="text" id="admin-service-message-input" class="form-input">
+                </div>
+                <button class="btn-primary" onclick="saveAdminScheduleSettings()">
+                  Guardar Horarios
+                </button>
+              </div>
+            </div>
+
+            <!-- TAB 8: CLIENTES -->
+            <div id="admin-tab-clientes" class="admin-tab-content" style="display: none;">
+              <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 16px;">Directorio de Clientes</h2>
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Identificador</th>
+                      <th>Nombre</th>
+                      <th>Teléfono</th>
+                      <th>Dirección Habitual</th>
+                      <th>Total Pedidos</th>
+                      <th>Gasto Acumulado</th>
+                      <th>Última Actividad</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-clients-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 9: MANTENIMIENTO Y ALMACENAMIENTO -->
+            <div id="admin-tab-mantenimiento" class="admin-tab-content" style="display: none;">
+              <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 16px;">Mantenimiento y Almacenamiento</h2>
+              
+              <!-- Storage Indicators -->
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <span class="kpi-label">Base de Datos (SQLite)</span>
+                  <span class="kpi-value" id="storage-db-size">0 KB</span>
+                </div>
+                <div class="kpi-card">
+                  <span class="kpi-label">Carpeta de Imágenes</span>
+                  <span class="kpi-value" id="storage-uploads-size">0 KB</span>
+                </div>
+                <div class="kpi-card green">
+                  <span class="kpi-label">Pedidos Activos en BD</span>
+                  <span class="kpi-value" id="storage-active-orders">0</span>
+                </div>
+                <div class="kpi-card">
+                  <span class="kpi-label">Pedidos Archivados</span>
+                  <span class="kpi-value" id="storage-archived-orders">0</span>
+                </div>
+              </div>
+
+              <!-- Action 1: Historical Archiving -->
+              <div class="shopping-form-card" style="margin-bottom: 20px;">
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">📦 Archivado de Información Histórica</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+                  Archiva pedidos antiguos para mantener las consultas operativas rápidas. Se genera automáticamente un resumen estadístico blindado para no perder las métricas históricas.
+                </p>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <select id="archive-year-select" class="form-select" style="max-width: 200px;">
+                    <!-- Years -->
+                  </select>
+                  <button class="btn-secondary" onclick="startCleanupProcess('archive')">
+                    Archivar año seleccionado
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action 2: Safe Controlled Deletion (6 steps) -->
+              <div class="shopping-form-card" style="margin-bottom: 20px; border-color: #fca5a5; background-color: #fffaf0;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #b91c1c; margin-bottom: 8px;">⚠️ Limpieza y Eliminación Controlada</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+                  Permite limpiar pedidos archivados antiguos o eliminar imágenes huérfanas en desuso. Sigue un estricto protocolo de 6 pasos con advertencia y confirmación explícita.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                  <button class="btn-danger" onclick="startCleanupProcess('delete_archived')">
+                    Limpieza anual de pedidos archivados
+                  </button>
+                  <button class="btn-secondary" onclick="startCleanupProcess('clean_orphans')">
+                    🧹 Limpiar imágenes huérfanas en desuso
+                  </button>
+                </div>
+              </div>
+
+              <!-- Audit Logs -->
+              <div class="section-headline">
+                <span>Registro de Auditoría de Mantenimiento</span>
+              </div>
+              <div class="data-table-wrapper">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Fecha / Hora</th>
+                      <th>Operación</th>
+                      <th>Descripción</th>
+                      <th>Registros Afectados</th>
+                      <th>Ejecutado Por</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-audit-logs-body">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB 10: AJUSTES GENERALES -->
+            <div id="admin-tab-ajustes" class="admin-tab-content" style="display: none;">
+              <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 16px;">Ajustes y Marca de la Plataforma</h2>
+              <div class="shopping-form-card">
+                <div class="form-group">
+                  <label class="form-label">Nombre oficial del proyecto</label>
+                  <input type="text" id="setting-platform-name" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Lema o eslogan</label>
+                  <input type="text" id="setting-tagline" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Descripción principal del Hero</label>
+                  <input type="text" id="setting-hero-desc" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">PIN de acceso al Panel Administrativo</label>
+                  <input type="password" id="setting-admin-pin" class="form-input" style="max-width: 200px;">
+                </div>
+                <button class="btn-primary" onclick="saveGeneralSettings()">
+                  Guardar Ajustes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODALS & DRAWERS                           -->
+  <!-- ========================================== -->
+
+  <!-- 1. RESTAURANT & DISHES MODAL -->
+  <div id="restaurant-modal" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header-banner">
+        <img id="rest-modal-img" src="" alt="Restaurante" class="modal-banner-img">
+        <button class="modal-close-btn" onclick="closeRestaurantModal()">✕</button>
+      </div>
+      <div class="modal-content-body">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+          <div>
+            <h2 id="rest-modal-name" style="font-size: 22px; font-weight: 900;">Taquería El Güero</h2>
+            <div id="rest-modal-cat" style="font-size: 13px; color: var(--text-muted);">Tacos • Comida mexicana</div>
+          </div>
+          <div id="rest-modal-rating" class="restaurant-rating" style="font-size: 16px;">★ 4.8</div>
+        </div>
+        <p id="rest-modal-desc" style="font-size: 13px; color: #475569; margin: 10px 0 16px;"></p>
+
+        <h3 style="font-size: 16px; font-weight: 800; border-top: 1px solid var(--border-color); padding-top: 16px;">
+          Menú de Platillos
+        </h3>
+        <div class="dishes-list" id="rest-modal-dishes">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MULTI-RESTAURANT CART DRAWER -->
+  <div id="cart-modal" class="modal-overlay">
+    <div class="cart-drawer-sheet">
+      <div class="cart-header">
+        <div class="cart-header-title">
+          <span>🛒</span> Mi Carrito Multirestaurante
+        </div>
+        <button class="modal-close-btn" style="position: static; background: #e2e8f0; color: #000;" onclick="closeCartModal()">✕</button>
+      </div>
+
+      <div class="cart-body">
+        <!-- Grouped items by restaurant -->
+        <div id="cart-items-container">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Observations -->
+        <div class="form-group">
+          <label class="form-label">💬 Observaciones para la cocina o repartidor</label>
+          <input type="text" id="cart-order-notes" class="form-input" placeholder="Ej. Sin cebolla, salsa aparte, servilletas extra...">
+        </div>
+
+        <!-- Delivery Address & Live Zone Calculation -->
+        <div class="cart-delivery-box">
+          <label class="form-label">📍 Dirección de entrega *</label>
+          <input type="text" id="cart-delivery-address" class="form-input" placeholder="Calle, número, colonia o referencias..." oninput="handleAddressZoneDetection('cart', this.value)">
+          <div id="cart-zone-badge" class="zone-detected-badge" style="display: none;">
+            <span>🗺️</span> <span id="cart-zone-text">Zona Centro - $20 MXN</span>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary-box">
+          <div class="summary-row">
+            <span>Subtotal de alimentos:</span>
+            <span id="cart-summary-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tarifa de entrega estimada:</span>
+            <span id="cart-summary-fare">$20.00</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total Estimado:</span>
+            <span id="cart-summary-total">$20.00</span>
+          </div>
+          <small style="color: var(--text-muted); font-size: 11px; display: block; margin-top: 6px;">
+            * El pedido se enviará a revisión y confirmación por el equipo de SanFer Eats vía WhatsApp.
+          </small>
+        </div>
+
+        <button class="btn-whatsapp-order" onclick="submitFoodCartOrder()">
+          <span>💬</span> Pedir por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CLIENT IDENTIFIER MODAL -->
+  <div id="client-modal" class="modal-overlay">
+    <div class="shopping-form-card modal-sheet" style="max-width: 440px; padding: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h3 style="font-size: 18px; font-weight: 800;">Identificación de Cliente</h3>
+        <button onclick="closeClientModal()" style="font-size: 20px;">✕</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+        Elige un nombre o apodo único para asociar tus pedidos (ej. Henry, HenryC, HCV).
+      </p>
+      <div class="form-group">
+        <label class="form-label">Identificador deseado *</label>
+        <input type="text" id="modal-client-identifier" class="form-input" placeholder="Ej. HenryC" oninput="checkIdentifierLive(this.value)">
+        <small id="modal-identifier-feedback" style="font-size: 12px; margin-top: 4px; display: block;"></small>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nombre completo</label>
+        <input type="text" id="modal-client-fullname" class="form-input" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono de contacto</label>
+        <input type="tel" id="modal-client-phone" class="form-input" placeholder="10 dígitos">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dirección habitual de entrega</label>
+        <input type="text" id="modal-client-address" class="form-input" placeholder="Tu dirección guardada">
+      </div>
+      <button class="btn-primary" style="width: 100%;" onclick="saveClientFromModal()">
+        Guardar Identificador
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. ORDER CONFIRMATION MODAL -->
+  <div id="order-success-modal" class="modal-overlay">
+    <div class="shopping-form-card modal-sheet" style="max-width: 480px; text-align: center; padding: 28px;">
+      <div style="font-size: 52px; margin-bottom: 10px;">🛵</div>
+      <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 8px;">¡Solicitud Generada con Éxito!</h2>
+      <div id="success-order-num" style="display: inline-block; background-color: #dcfce7; color: var(--primary-green); padding: 4px 14px; border-radius: var(--radius-full); font-weight: 800; font-size: 16px; margin-bottom: 14px;">
+        #SF-1001
+      </div>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+        Hemos abierto WhatsApp con los datos de tu pedido listo para enviar. Si no se abrió automáticamente, haz clic en el botón de abajo:
+      </p>
+      <a id="success-wa-link" href="#" target="_blank" class="btn-whatsapp-order" style="margin-bottom: 12px;">
+        <span>💬</span> Abrir en WhatsApp
+      </a>
+      <button class="btn-secondary" style="width: 100%;" onclick="closeSuccessModal()">
+        Volver a la tienda
+      </button>
+    </div>
+  </div>
+
+  <!-- 5. ADMIN 6-STEP CLEANUP MODAL -->
+  <div id="admin-cleanup-modal" class="modal-overlay">
+    <div class="shopping-form-card modal-sheet" style="max-width: 520px; padding: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 id="cleanup-modal-title" style="font-size: 18px; font-weight: 900; color: #b91c1c;">
+          Protocolo de Mantenimiento Seguro
+        </h3>
+        <button onclick="closeCleanupModal()" style="font-size: 20px;">✕</button>
+      </div>
+
+      <div class="cleanup-step-card">
+        <span class="cleanup-step-badge">Paso 1 y 2: Diagnóstico</span>
+        <div id="cleanup-diagnostics-text" style="font-size: 13px; font-weight: 600; margin-top: 4px;"></div>
+      </div>
+
+      <div class="cleanup-step-card" style="background-color: #fee2e2; border-color: #fca5a5;">
+        <span class="cleanup-step-badge" style="background-color: #dc2626;">Paso 3: Advertencia de Impacto</span>
+        <div id="cleanup-warning-text" style="font-size: 13px; color: #991b1b; margin-top: 4px;"></div>
+      </div>
+
+      <div class="form-group">
+        <span class="cleanup-step-badge" style="background-color: #475569;">Paso 4: Confirmación Explícita</span>
+        <p style="font-size: 13px; color: var(--text-muted); margin: 6px 0;">
+          Para proceder, escribe exactamente la palabra <strong style="color: #dc2626;">CONFIRMAR</strong> en mayúsculas:
+        </p>
+        <input type="text" id="cleanup-confirm-input" class="form-input" placeholder="CONFIRMAR">
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 16px;">
+        <button class="btn-secondary" style="flex: 1;" onclick="closeCleanupModal()">Cancelar</button>
+        <button id="cleanup-execute-btn" class="btn-danger" style="flex: 1;" onclick="executeCleanupStep()">
+          Ejecutar Operación (Paso 5)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. ADMIN ORDER DETAILS & FEE ADJUSTMENT MODAL -->
+  <div id="admin-order-modal" class="modal-overlay">
+    <div class="shopping-form-card modal-sheet" style="max-width: 600px; padding: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 id="admin-modal-order-title" style="font-size: 18px; font-weight: 800;">Detalle de Pedido #SF-1001</h3>
+        <button onclick="closeAdminOrderModal()" style="font-size: 20px;">✕</button>
+      </div>
+      <div id="admin-order-details-body">
+        <!-- Dynamically injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. ADMIN FORM MODALS (Restaurant, Dish, Zone, WhatsApp) -->
+  <div id="admin-generic-form-modal" class="modal-overlay">
+    <div class="shopping-form-card modal-sheet" style="max-width: 500px; padding: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 id="generic-form-title" style="font-size: 18px; font-weight: 800;">Formulario</h3>
+        <button onclick="closeGenericFormModal()" style="font-size: 20px;">✕</button>
+      </div>
+      <div id="generic-form-fields">
+        <!-- Dynamically injected inputs -->
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 18px;">
+        <button class="btn-secondary" style="flex: 1;" onclick="closeGenericFormModal()">Cancelar</button>
+        <button id="generic-form-save-btn" class="btn-primary" style="flex: 1;" onclick="saveGenericForm()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- STICKY FLOATING CART BUTTON                -->
+  <!-- ========================================== -->
+  <button id="floating-cart-btn" class="cart-floating-btn" onclick="openCartModal()">
+    <div style="display: flex; align-items: center;">
+      <span class="cart-badge-count" id="floating-cart-count">0</span>
+      <span>Ver Carrito Multirestaurante</span>
+    </div>
+    <span id="floating-cart-total">$0.00</span>
+  </button>
+
+  <!-- ========================================== -->
+  <!-- MOBILE BOTTOM NAVIGATION BAR               -->
+  <!-- ========================================== -->
+  <nav class="bottom-nav">
+    <button class="bottom-nav-item active" data-bottom-nav="inicio" onclick="navigateTo('inicio')">
+      <span class="icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="bottom-nav-item" data-bottom-nav="comida" onclick="navigateTo('comida')">
+      <span class="icon">🍽️</span>
+      <span>Comida</span>
+    </button>
+    <button class="bottom-nav-item" data-bottom-nav="compras" onclick="navigateTo('compras')">
+      <span class="icon">🛒</span>
+      <span>Compras</span>
+    </button>
+    <button class="bottom-nav-item" data-bottom-nav="entrega" onclick="navigateTo('entrega')">
+      <span class="icon">📦</span>
+      <span>Entrega</span>
+    </button>
+    <button class="bottom-nav-item" data-bottom-nav="perfil" onclick="navigateTo('perfil')">
+      <span class="icon">👤</span>
+      <span>Mi Cuenta</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
