@@ -170,9 +170,10 @@ function detectDeliveryZone(address = '') {
 
 // Generate next order number
 function getNextOrderNumber() {
-  const row = db.prepare('SELECT COUNT(*) as total FROM orders').get();
-  const nextNum = (row?.total || 0) + 1001;
-  return `#SF-${nextNum}`;
+  // Genera un folio unico real con crypto.randomUUID(), que el propio
+  // sistema garantiza que nunca se repite (no depende de contar ni sumar nada).
+  const uuid = crypto.randomUUID().replace(/-/g, '').toUpperCase();
+  return `#SF-${uuid.slice(0, 8)}`;
 }
 
 // Dynamic WhatsApp message builder according to specifications
